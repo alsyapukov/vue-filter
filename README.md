@@ -1,16 +1,19 @@
-# Vue filter
+# Vue product filter
 
-## Project setup
+### View demo http://syapukovit.ru/vue-filter/
+![alt text](https://raw.githubusercontent.com/alsyapukov/vue-filter/master/preview.jpg)
+
+### Install packages
 ```
-npm install
+npm i
 ```
 
-### Compiles and hot-reloads for development
+### Run development server
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Build project
 ```
 npm run build
 ```
