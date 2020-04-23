@@ -24,7 +24,7 @@ module.exports = {
         name: path.join('../src/assets/', 'img/[name].[ext]')
       })
   },
-  publicPath: '/',
+  publicPath: '/vue-filter/',
   productionSourceMap: true,
   assetsDir: './assets'
 }
