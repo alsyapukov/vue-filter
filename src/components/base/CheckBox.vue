@@ -2,8 +2,9 @@
   <label class="checkbox">
     <input class="checkbox__input" type="checkbox" :disabled="disabled" v-model="isChecked" />
 
-    <div class="checkbox__text">
-      <slot></slot>
+    <div class="checkbox__text" v-if="title">
+      <span>{{ title }}</span>
+      <span v-if="icon">{{ icon }}</span>
     </div>
   </label>
 </template>
@@ -14,6 +15,14 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    title: {
+      type: String,
+      default: null
+    },
+    icon: {
+      type: String,
+      default: null
     }
   },
   data() {

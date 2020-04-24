@@ -6,11 +6,7 @@
       </div>
       <div class="product-list__variants">
         <div class="variants__item" v-for="variant in filterVariants" :key="variant.unique_id">
-          <CheckBox @input="$emit('send', $event)">
-            <span>{{ variant.display_name }}</span>
-            <span v-if="variant.unique_id === 1">⭐</span>
-            <span v-else-if="variant.unique_id === 2">👟</span>
-          </CheckBox>
+          <CheckBox @input="$emit('send', $event)" :title="variant.display_name" :icon="variant.icon" />
         </div>
       </div>
     </div>
@@ -41,7 +37,24 @@ export default {
     };
   },
   mounted() {
-    this.filterVariants = this.listVariants;
+    this.filterVariants = this.listVariants.map((variant) => {
+      let star = '⭐';
+      let boots = '👟';
+
+      if(variant.unique_id === 1) {
+        return {
+          ...variant,
+          icon: star
+        }
+      }
+      if(variant.unique_id === 2) {
+        return {
+          ...variant,
+          icon: boots
+        }
+      }
+      return variant;
+    });
   },
   watch: {
     searchValue(val) {
