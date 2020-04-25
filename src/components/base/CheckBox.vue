@@ -2,9 +2,8 @@
   <label class="checkbox">
     <input class="checkbox__input" type="checkbox" :disabled="disabled" v-model="isChecked" />
 
-    <div class="checkbox__text" v-if="title">
+    <div class="checkbox__text" v-if="title" ref="checkboxText">
       <span>{{ title }}</span>
-      <span v-if="icon">{{ icon }}</span>
     </div>
   </label>
 </template>
@@ -36,6 +35,9 @@ export default {
     } else {
       this.isChecked = false;
     }
+    if(this.icon) {
+      this.setIcon();
+    }
   },
   watch: {
     "$attrs.value"(val) {
@@ -48,6 +50,9 @@ export default {
   methods: {
     valueChange(val) {
       this.$emit("input", val);
+    },
+    setIcon() {
+      this.$refs.checkboxText.innerHTML = `${this.$refs.checkboxText.innerHTML} <span>${this.icon}</span>`;
     }
   }
 };
